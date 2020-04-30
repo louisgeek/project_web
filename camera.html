@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>摄像头拍照</title>
+</head>
+
+<body>
+  <script>
+    var width = 320,
+      height = 240;
+    var bodyHtml = '<video id="video" width="' + width + '" height="' + height + '" controls></video>'
+    document.write(bodyHtml);
+    var video = document.getElementById('video');
+    navigator.webkitGetUserMedia({ video:{facingMode:{exact:'environment'}}}, function (stream) {
+      video.src = window.webkitURL.createObjectURL(stream);
+      video.play();
+    }, function (error) {
+      console.log('访问用户媒体设备失败${error.name}, ${error.message}');
+    });
+  </script>
+  <div>
+
+  </div>
+</body>
+
+</html>
